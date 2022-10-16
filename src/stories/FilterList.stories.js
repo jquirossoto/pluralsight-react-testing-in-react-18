@@ -4,4 +4,4 @@ export default {
     component: FilterList
 };
 
-export const Primary = () => <FilterList list={['one', 'two', 'three']}/>;
+export const Primary = () => <FilterList items={['one', 'two', 'three']} onSelectionChange={()=>{}}/>;

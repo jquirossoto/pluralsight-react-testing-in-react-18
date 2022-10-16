@@ -5,17 +5,16 @@ const defaultItems = [
     'one','two','three'
 ];
 
-const filterListState = {
+const intialState = {
     items: defaultItems,
-    filter: '',
+    selected: [],
 }
 
 function reducer(state, action) {
     switch (action.type) {
-        case 'FILTER_CHANGE': {
+        case 'SELECTION_CHANGE': {
             return Object.assign({}, state, { 
-                filter: action.content,
-                items: defaultItems.filter(i => i.match(new RegExp(action.content))),
+                selected: action.selection
             });
         }
         default: throw new Error(`Unknown action type ${action.type}`);
@@ -23,7 +22,7 @@ function reducer(state, action) {
 }
 
 function FilterListDemo() {
-    const [state, dispatch] = useReducer(reducer, filterListState);
+    const [state, dispatch] = useReducer(reducer, intialState);
 
     return (
       <>
@@ -36,7 +35,9 @@ function FilterListDemo() {
         </header>
         <div className="row">
           <div className="col">
-            <FilterList {...state} onFilterChange={(content) => {dispatch({type: 'FILTER_CHANGE', content})}} />
+            <FilterList items={state.items} onSelectionChange={(selection) => {
+                dispatch({type: 'SELECTION_CHANGE', selection})
+            }} />
           </div>
         </div>
       </>
