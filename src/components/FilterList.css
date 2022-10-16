@@ -1,0 +1,15 @@
+.filter-list {
+    display: inline-block;
+    box-shadow: 0px 0px 9px 0px #B2BBC4;
+    padding: 1em;
+    margin: 1em;
+}
+
+.filter-list .item {
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+.filter-list .item:hover {
+    background-color: #eee;
+}
